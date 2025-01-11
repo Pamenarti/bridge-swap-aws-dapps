@@ -21,9 +21,9 @@ A comprehensive staking platform supporting multiple tokens, flexible reward mec
 
 ## 🛠 Installation
 
-\`\`\`bash
+```bash
 # Clone the repository
-git clone https://github.com/yourusername/staking-platform
+git clone https://github.com/Pamenarti/staking-platform
 
 # Navigate to project directory
 cd staking-platform
@@ -33,23 +33,23 @@ npm install
 
 # Create environment file
 cp .env.example .env
-\`\`\`
+```
 
 ## ⚙️ Configuration
 
 Configure your \`.env\` file:
 
-\`\`\`env
+```env
 RPC_URL=your_rpc_url
 PRIVATE_KEY=your_private_key
 STAKING_PLATFORM_ADDRESS=deployed_contract_address
-\`\`\`
+```
 
 ## 📖 Usage Examples
 
 ### Create Staking Pool
 
-\`\`\`javascript
+```javascript
 const StakingService = require('./index.js');
 const staking = new StakingService();
 
@@ -60,24 +60,24 @@ await staking.createPool(
     ethers.utils.parseEther("0.1"), // 0.1 tokens per second
     7 * 24 * 60 * 60 // 1 week lock
 );
-\`\`\`
+```
 
 ### Stake Tokens
 
-\`\`\`javascript
+```javascript
 // Stake tokens in pool
 await staking.stake(
     poolId,
     ethers.utils.parseEther("1000")
 );
-\`\`\`
+```
 
 ### Enable Auto-compounding
 
-\`\`\`javascript
+```javascript
 // Enable auto-compounding for pool
 await staking.toggleCompounding(poolId);
-\`\`\`
+```
 
 ## 📊 Pool Templates
 
@@ -90,19 +90,19 @@ await staking.toggleCompounding(poolId);
 ## 🔒 Security Features
 
 ### Withdrawal Checks
-\`\`\`solidity
+```solidity
 require(user.stakedAmount >= amount, "Insufficient balance");
 require(block.timestamp >= user.lockEndTime, "Lock period active");
-\`\`\`
+```
 
 ### Fee Calculation
-\`\`\`javascript
+```javascript
 const feeAmount = amount.mul(earlyWithdrawFee).div(10000);
-\`\`\`
+```
 
 ## 📈 Analytics & Monitoring
 
-\`\`\`javascript
+```javascript
 // Get pool analytics
 const analytics = await staking.getPoolAnalytics(poolId);
 console.log(`
@@ -110,11 +110,11 @@ console.log(`
     Total Staked: ${analytics.totalStaked}
     Utilization: ${analytics.utilizationRate}
 `);
-\`\`\`
+```
 
 ## 🧪 Testing
 
-\`\`\`bash
+```bash
 # Run all tests
 npx hardhat test
 
@@ -123,7 +123,7 @@ npx hardhat test test/StakingPlatform.test.js
 
 # Get coverage report
 npx hardhat coverage
-\`\`\`
+```
 
 ## 📈 Contract Functions
 
@@ -146,7 +146,7 @@ npx hardhat coverage
 
 ## 🔍 Implementation Details
 
-\`\`\`solidity
+```solidity
 struct Pool {
     IERC20 stakingToken;
     IERC20 rewardToken;
@@ -165,7 +165,7 @@ struct UserInfo {
     uint256 lockEndTime;
     bool isCompounding;
 }
-\`\`\`
+```
 
 ## 🤝 Contributing
 
@@ -181,9 +181,11 @@ Distributed under the MIT License. See \`LICENSE\` for more information.
 
 ## 📞 Contact
 
-Your Name - [@yourusername](https://twitter.com/yourusername)
+Paro - [@Pamenarti](https://twitter.com/pamenarti)
 
-Project Link: [https://github.com/yourusername/staking-platform](https://github.com/yourusername/staking-platform)
+Email - [pamenarti@gmail.com](pamenarti@gmail.com)
+
+Project Link: [https://github.com/Pamenarti/staking-platform](https://github.com/Pamenarti/staking-platform)
 
 ## 🙏 Acknowledgments
 
