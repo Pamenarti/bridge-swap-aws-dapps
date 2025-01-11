@@ -185,7 +185,7 @@ Paro - [@Pamenarti](https://twitter.com/pamenarti)
 
 Email - [pamenarti@gmail.com](pamenarti@gmail.com)
 
-Project Link: [https://github.com/Pamenarti/staking-platform](https://github.com/Pamenarti/staking-platform)
+Project Link: [https://github.com/Pamenarti/StakingPlatform](https://github.com/Pamenarti/StakingPlatform)
 
 ## 🙏 Acknowledgments
 
