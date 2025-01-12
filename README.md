@@ -23,7 +23,7 @@ A comprehensive staking platform supporting multiple tokens, flexible reward mec
 
 ```bash
 # Clone the repository
-git clone https://github.com/Pamenarti/staking-platform
+git clone https://github.com/Pamenarti/bridge-swap-aws-dapps
 
 # Navigate to project directory
 cd staking-platform
@@ -185,7 +185,7 @@ Paro - [@Pamenarti](https://twitter.com/pamenarti)
 
 Email - [pamenarti@gmail.com](pamenarti@gmail.com)
 
-Project Link: [https://github.com/Pamenarti/StakingPlatform](https://github.com/Pamenarti/StakingPlatform)
+Project Link: [https://github.com/Pamenarti/bridge-swap-aws-dapps](https://github.com/Pamenarti/bridge-swap-aws-dapps)
 
 ## 🙏 Acknowledgments
 

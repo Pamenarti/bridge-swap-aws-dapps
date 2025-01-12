@@ -1,0 +1,43 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'Staking Platform AWS Resources'
+
+Resources:
+  StakingLambdaFunction:
+    Type: 'AWS::Lambda::Function'
+    Properties:
+      Handler: index.handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Code:
+        S3Bucket: !Ref 'LambdaCodeBucket'
+        S3Key: 'staking-handlers.zip'
+      Runtime: nodejs14.x
+      Timeout: 30
+      Environment:
+        Variables:
+          ETHEREUM_RPC_URL: !Ref 'EthereumRpcUrl'
+          CONTRACT_ADDRESS: !Ref 'ContractAddress'
+
+  UserStakingStatsTable:
+    Type: 'AWS::DynamoDB::Table'
+    Properties:
+      TableName: 'UserStakingStats'
+      AttributeDefinitions:
+        - AttributeName: 'userAddress'
+          AttributeType: 'S'
+      KeySchema:
+        - AttributeName: 'userAddress'
+          KeyType: 'HASH'
+      BillingMode: 'PAY_PER_REQUEST'
+
+  LambdaExecutionRole:
+    Type: 'AWS::IAM::Role'
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: 'sts:AssumeRole'
+      ManagedPolicyArns:
+        - 'arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole' 
