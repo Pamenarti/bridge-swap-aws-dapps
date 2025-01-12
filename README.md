@@ -1,183 +1,161 @@
-# 🏦 Advanced Staking Platform
+# 🏦 bridge-swap-aws-dapps
+
+# 🌟 Advanced DeFi Platform
+
+> A comprehensive DeFi platform featuring staking, swapping, and cross-chain bridge capabilities with a modern UI built using Chakra UI.
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Solidity](https://img.shields.io/badge/solidity-%5E0.8.0-blue)
-![Node](https://img.shields.io/badge/node-%3E%3D14.0.0-green)
-![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)
+![React](https://img.shields.io/badge/react-%5E18.2.0-brightgreen)
+![ChakraUI](https://img.shields.io/badge/chakra--ui-%5E2.8.2-purple)
 
-## 📝 Description
+## 🎯 Core Features
 
-A comprehensive staking platform supporting multiple tokens, flexible reward mechanisms, and advanced features like auto-compounding and lock periods.
+### 🔄 Swap System
+- **AMM-based** liquidity pools
+- Real-time price estimation
+- Low slippage optimization
+- Dynamic fee structure (up to 10%)
+- Token pair management
+- Liquidity provider functionality
 
-### 🚀 Features
+### 🌉 Bridge System
+- Cross-chain token transfers
+- Multi-chain support (ETH, BSC, Polygon, Avalanche)
+- Secure nonce-based transaction tracking
+- Signature verification
+- Event emission for tracking
+- Automated status updates
 
-- 🔄 Multi-token support
-- 💰 Flexible reward rates
-- 🔒 Customizable lock periods
-- 📈 Auto-compounding
-- ⚡ APR calculations
-- 🛡️ Early withdrawal fees
-- 📊 Real-time analytics
+### 💎 Staking Platform
+- Flexible staking options
+- Reward distribution system
+- Lock period management
+- APR calculations
+- Auto-compounding capabilities
 
-## 🛠 Installation
+## 🏗 Technical Architecture
 
+### Smart Contracts
+```solidity
+contracts/
+├── Bridge.sol       # Cross-chain bridge implementation
+├── Swap.sol         # AMM swap functionality
+└── Staking.sol      # Staking and rewards logic
+```
+
+### Frontend Structure
+```
+frontend/
+├── src/
+│   ├── components/
+│   │   ├── SwapPanel.js
+│   │   ├── BridgePanel.js
+│   │   └── StakingPanel.js
+│   ├── hooks/
+│   │   ├── useSwapContract.js
+│   │   └── useBridgeContract.js
+│   └── App.js
+```
+
+## 💫 UI Features
+
+### 🎨 Design System
+- **Framework**: Chakra UI
+- **Theme**: Light/Dark mode support
+- **Layout**: Responsive grid system
+- **Components**: Custom-styled Chakra components
+
+### 📱 Interface Elements
+- Tab-based navigation
+- Interactive forms
+- Real-time status updates
+- Loading indicators
+- Toast notifications
+- Error handling
+
+## 🛠 Technical Stack
+
+### Frontend
+- React 18.2.0
+- Chakra UI 2.8.2
+- Web3-React 8.2.3
+- Ethers.js 5.7.2
+- React Icons 4.11.0
+
+### Smart Contracts
+- Solidity ^0.8.0
+- OpenZeppelin Contracts
+  - ERC20
+  - ReentrancyGuard
+  - Ownable
+
+### Development Tools
+- Hardhat
+- React Scripts
+- Web3 Provider
+
+## 🔐 Security Features
+
+### Smart Contracts
+- Reentrancy protection
+- Access control
+- Safe math operations
+- Event logging
+- Nonce-based transaction tracking
+
+### Frontend
+- Web3 connection management
+- Error boundary implementation
+- Transaction confirmation handling
+- Secure state management
+
+## 🚀 Getting Started
+
+### Prerequisites
 ```bash
-# Clone the repository
-git clone https://github.com/Pamenarti/bridge-swap-aws-dapps
+node >= 14.0.0
+npm >= 6.14.0
+```
 
-# Navigate to project directory
-cd staking-platform
-
+### Installation
+```bash
 # Install dependencies
 npm install
 
-# Create environment file
-cp .env.example .env
+# Start development server
+npm start
+
+# Build for production
+npm run build
 ```
 
-## ⚙️ Configuration
-
-Configure your \`.env\` file:
-
+### Environment Setup
 ```env
-RPC_URL=your_rpc_url
-PRIVATE_KEY=your_private_key
-STAKING_PLATFORM_ADDRESS=deployed_contract_address
+REACT_APP_SWAP_CONTRACT_ADDRESS=<swap_contract_address>
+REACT_APP_BRIDGE_CONTRACT_ADDRESS=<bridge_contract_address>
 ```
 
-## 📖 Usage Examples
+## 📈 Future Enhancements
 
-### Create Staking Pool
-
-```javascript
-const StakingService = require('./index.js');
-const staking = new StakingService();
-
-// Create new staking pool
-await staking.createPool(
-    stakingTokenAddress,
-    rewardTokenAddress,
-    ethers.utils.parseEther("0.1"), // 0.1 tokens per second
-    7 * 24 * 60 * 60 // 1 week lock
-);
-```
-
-### Stake Tokens
-
-```javascript
-// Stake tokens in pool
-await staking.stake(
-    poolId,
-    ethers.utils.parseEther("1000")
-);
-```
-
-### Enable Auto-compounding
-
-```javascript
-// Enable auto-compounding for pool
-await staking.toggleCompounding(poolId);
-```
-
-## 📊 Pool Templates
-
-| Type | Lock Period | Early Withdraw Fee | Compounding |
-|------|-------------|-------------------|-------------|
-| Flexible | None | 5% | Optional |
-| Locked | 30 days | 10% | Optional |
-| High Yield | 90 days | 15% | Mandatory |
-
-## 🔒 Security Features
-
-### Withdrawal Checks
-```solidity
-require(user.stakedAmount >= amount, "Insufficient balance");
-require(block.timestamp >= user.lockEndTime, "Lock period active");
-```
-
-### Fee Calculation
-```javascript
-const feeAmount = amount.mul(earlyWithdrawFee).div(10000);
-```
-
-## 📈 Analytics & Monitoring
-
-```javascript
-// Get pool analytics
-const analytics = await staking.getPoolAnalytics(poolId);
-console.log(`
-    APR: ${analytics.apr}
-    Total Staked: ${analytics.totalStaked}
-    Utilization: ${analytics.utilizationRate}
-`);
-```
-
-## 🧪 Testing
-
-```bash
-# Run all tests
-npx hardhat test
-
-# Run specific test file
-npx hardhat test test/StakingPlatform.test.js
-
-# Get coverage report
-npx hardhat coverage
-```
-
-## 📈 Contract Functions
-
-| Function | Description | Access |
-|----------|-------------|--------|
-| \`createPool\` | Create new staking pool | Owner |
-| \`stake\` | Stake tokens in pool | Public |
-| \`withdraw\` | Withdraw staked tokens | Public |
-| \`claimRewards\` | Claim accumulated rewards | Public |
-| \`toggleCompounding\` | Enable/disable auto-compound | Public |
-
-## 🛡️ Security Measures
-
-- ✅ Reentrancy protection
-- ✅ SafeMath operations
-- ✅ Access controls
-- ✅ Emergency pause
-- ✅ Fee limits
-- ✅ Lock period validation
-
-## 🔍 Implementation Details
-
-```solidity
-struct Pool {
-    IERC20 stakingToken;
-    IERC20 rewardToken;
-    uint256 rewardRate;
-    uint256 lockDuration;
-    uint256 totalStaked;
-    uint256 lastUpdateTime;
-    uint256 rewardPerTokenStored;
-    bool isActive;
-}
-
-struct UserInfo {
-    uint256 stakedAmount;
-    uint256 rewards;
-    uint256 rewardPerTokenPaid;
-    uint256 lockEndTime;
-    bool isCompounding;
-}
-```
+- [ ] Governance token integration
+- [ ] DAO implementation
+- [ ] Multi-signature wallet support
+- [ ] Advanced analytics dashboard
+- [ ] Yield farming strategies
+- [ ] NFT integration
 
 ## 🤝 Contributing
 
-1. Fork the Project
-2. Create your Feature Branch (\`git checkout -b feature/AmazingFeature\`)
-3. Commit your Changes (\`git commit -m 'Add some AmazingFeature'\`)
-4. Push to the Branch (\`git push origin feature/AmazingFeature\`)
-5. Open a Pull Request
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a pull request
 
-## 📜 License
+## 📄 License
 
-Distributed under the MIT License. See \`LICENSE\` for more information.
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## 📞 Contact
 
